@@ -8,10 +8,16 @@ use App\Exports\EmployeeExport;
 use App\Imports\EmployeeImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
+use App\DataTables\EmployeesDataTable;
 
 
 class EmployeeController extends Controller
 {
+    public function dataTables(EmployeesDataTable $dataTable)
+    {
+        return $dataTable->render('employee.data-tables');
+    }
+
     public function list()
     {
         $employees = Employee::all();

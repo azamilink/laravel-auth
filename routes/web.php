@@ -39,7 +39,7 @@ Route::get('/students', [StudentController::class, 'fetchStudents']);
 Route::get('/add-user', [UserController::class, 'insertRecord']);
 Route::get('/show-user/{id}', [UserController::class, 'fetchPhoneUser']);
 
-// eloquent crud
+// eloquent crud (Auth: Login Dulu)
 Route::get('posts', [PostController::class, 'allPost'])->name('posts');
 Route::get('add-post', [PostController::class, 'addPost'])->name('post.add');
 Route::post('create-post', [PostController::class, 'createPost'])->name('post.create');
@@ -58,7 +58,11 @@ Route::get('attach-role/{id}', [RoleController::class, 'attachRole']);
 Route::get('role-by-user/{id}', [RoleController::class, 'getAllRoleByUser']);
 Route::get('user-by-role/{id}', [RoleController::class, 'getAllUserByRole']);
 
+// Data Table
+Route::get('data-tables', [EmployeeController::class, 'dataTables'])->name('data.tables');
 Route::get('list', [EmployeeController::class, 'list'])->name('list');
+
+// (Auth: Login Dulu)
 Route::get('employees', [EmployeeController::class, 'employees'])->name('employees');
 
 // export data to excel - pdf - csv

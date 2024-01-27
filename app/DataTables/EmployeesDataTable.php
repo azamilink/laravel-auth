@@ -12,7 +12,7 @@ use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
-class EmployeeDataTable extends DataTable
+class EmployeesDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -21,9 +21,7 @@ class EmployeeDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))
-            // ->addColumn('action', 'employee.action')
-            ->setRowId('id');
+        return (new EloquentDataTable($query))->setRowId('id');
     }
 
     /**
@@ -40,20 +38,19 @@ class EmployeeDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('employee-table')
+            ->setTableId('employees-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            //->dom('Bfrtip')
+            ->dom('Bfrtip')
             ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('add'),
                 Button::make('excel'),
                 Button::make('csv'),
                 Button::make('pdf'),
                 Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Button::make('reset'),
+                // Button::make('reload')
             ]);
     }
 
@@ -63,19 +60,11 @@ class EmployeeDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            // Column::computed('action')
-            //     ->exportable(false)
-            //     ->printable(false)
-            //     ->width(60)
-            //     ->addClass('text-center'),
-            Column::make('id'),
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),
             Column::make('salary'),
             Column::make('department'),
-            // Column::make('created_at'),
-            // Column::make('updated_at'),
         ];
     }
 
@@ -84,6 +73,6 @@ class EmployeeDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Employee_' . date('YmdHis');
+        return 'Employees_' . date('YmdHis');
     }
 }
