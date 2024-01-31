@@ -1,20 +1,19 @@
 <?php
 
-use Maatwebsite\Excel\Row;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ZipController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EditorController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\EditorController;
 use App\Http\Controllers\WorkerController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ZipController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use ZipArchive;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use ZipArchive;
 
 class ZipController extends Controller
 {
@@ -13,7 +12,7 @@ class ZipController extends Controller
         $zip = new ZipArchive;
         $fileName = 'myzip.zip';
 
-        if ($zip->open(public_path($fileName), ZipArchive::CREATE)  === TRUE) {
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === true) {
             $files = File::files(public_path('myfiles'));
             foreach ($files as $key => $value) {
                 $relativeNameInZipFile = basename($value);
@@ -21,6 +20,7 @@ class ZipController extends Controller
             }
             $zip->close();
         }
+
         return response()->download(public_path($fileName));
     }
 }

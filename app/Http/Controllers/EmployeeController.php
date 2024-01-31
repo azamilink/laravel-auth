@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
-use Illuminate\Http\Request;
+use App\DataTables\EmployeesDataTable;
 use App\Exports\EmployeeExport;
 use App\Imports\EmployeeImport;
+use App\Models\Employee;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\DataTables\EmployeesDataTable;
-
 
 class EmployeeController extends Controller
 {
@@ -21,12 +20,14 @@ class EmployeeController extends Controller
     public function list()
     {
         $employees = Employee::all();
+
         return view('employee.list', compact('employees'));
     }
 
     public function employees()
     {
         $employees = Employee::paginate(6);
+
         return view('employee.all', compact('employees'));
     }
 
@@ -35,6 +36,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all();
         $pdf = Pdf::loadView('employee.all', compact('employees'));
+
         return $pdf->download('employees.pdf');
     }
 
@@ -57,6 +59,7 @@ class EmployeeController extends Controller
     public function import(Request $request)
     {
         Excel::import(new EmployeeImport, $request->file);
-        return "Record has added";
+
+        return 'Record has added';
     }
 }

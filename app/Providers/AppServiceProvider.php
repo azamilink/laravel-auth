@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Yajra\DataTables\Html\Builder;
 use Illuminate\Support\ServiceProvider;
+use Yajra\DataTables\Html\Builder;
 
 class AppServiceProvider extends ServiceProvider
 {

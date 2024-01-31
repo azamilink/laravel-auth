@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
@@ -19,21 +18,24 @@ class RoleController extends Controller
         ];
 
         Role::insert($roles);
-        return "Roles are created successfully";
+
+        return 'Roles are created successfully';
     }
 
     public function attachRole($id)
     {
-        $user =  User::find($id);
+        $user = User::find($id);
         $roleIds = [1, 2];
         $user->role()->attach($roleIds);
-        return "record has been created successfuly";
+
+        return 'record has been created successfuly';
     }
 
     public function getAllRoleByUser($id)
     {
         $user = User::find($id);
         $roles = $user->role;
+
         return $roles;
     }
 
@@ -41,6 +43,7 @@ class RoleController extends Controller
     {
         $role = Role::find($id);
         $users = $role->user;
+
         return $users;
     }
 }

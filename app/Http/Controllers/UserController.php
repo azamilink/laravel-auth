@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Phone;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -18,12 +17,14 @@ class UserController extends Controller
         $user->password = encrypt('secret');
         $user->save();
         $user->phone()->save($phone);
+
         return 'record has been created';
     }
 
-    function fetchPhoneUser($id)
+    public function fetchPhoneUser($id)
     {
         $phone = User::find($id)->phone;
+
         return $phone;
     }
 }

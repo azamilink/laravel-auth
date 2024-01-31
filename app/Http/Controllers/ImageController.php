@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class ImageController extends Controller
 {
@@ -21,7 +21,8 @@ class ImageController extends Controller
 
         $imageResize = $manager->read($image->getRealPath());
         $imageResize->resize(300, 300);
-        $imageResize->save(public_path('images/' . $fileName));
-        return redirect('images/' . $fileName);
+        $imageResize->save(public_path('images/'.$fileName));
+
+        return redirect('images/'.$fileName);
     }
 }

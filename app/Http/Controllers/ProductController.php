@@ -10,15 +10,16 @@ class ProductController extends Controller
     public function addProduct()
     {
         $products = [
-            ['name' => "Phone"],
-            ['name' => "Tablet"],
-            ['name' => "Laptop"],
-            ['name' => "Watch"],
-            ['name' => "Television"],
-            ['name' => "Freeze"],
+            ['name' => 'Phone'],
+            ['name' => 'Tablet'],
+            ['name' => 'Laptop'],
+            ['name' => 'Watch'],
+            ['name' => 'Television'],
+            ['name' => 'Freeze'],
         ];
         Product::insert($products);
-        return "Product has been inserted successfully";
+
+        return 'Product has been inserted successfully';
     }
 
     public function search()
@@ -28,9 +29,10 @@ class ProductController extends Controller
 
     public function autoComplete(Request $req)
     {
-        $datas = Product::select("name")
-            ->where("name", "LIKE", "%{$req->terms}%")
+        $datas = Product::select('name')
+            ->where('name', 'LIKE', "%{$req->terms}%")
             ->get();
+
         return response()->json($datas);
     }
 }
